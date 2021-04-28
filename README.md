@@ -1,0 +1,1 @@
+Determine the least cost path to take in a graph for crafting recipies.

@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "pretest": "tsc",
+    "test": "node ./dist/test.js"
+  },
+  "devDependencies": {
+    "@types/node": "^15.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "eslint": "^7.25.0"
+  }
+}
