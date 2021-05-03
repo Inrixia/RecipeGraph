@@ -1,4 +1,4 @@
-import { GraphNode } from "./Node";
+import { GraphNode } from "./GraphNode";
 import { Recipe } from "./Recipe";
 
 export class Resource extends GraphNode {
@@ -10,8 +10,13 @@ export class Resource extends GraphNode {
 		this.production = 0;
 	}
 
-	public connectToNode(toNode: Recipe, weight: number): void {
-		super.connectToNode(toNode, (this.production/weight)+weight);
+	/**
+	 * Connect output from a Recipe to this Resource.
+	 * @param fromRecipe Recipe that makes this resource.
+	 * @param amountProduced Amount of this Resource `fromRecipe` produces. 
+	 */
+	public connectIngress(fromRecipe: Recipe, amountProduced: number): void {
+		fromRecipe.connectToNode(this, this.avalible/amountProduced);
 	}
 
 	public get avalible(): number {

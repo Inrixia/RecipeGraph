@@ -1,4 +1,4 @@
-import { GraphNode } from "./Node";
+import { GraphNode } from "./GraphNode";
 import { Recipe, RecipeObj } from "./Recipe";
 import { Resource } from "./Resource";
 
@@ -21,9 +21,11 @@ export class RecipeGraph {
 		const startNode = this.resources[resource];
 		if (startNode === undefined) throw Error("startNode does not exist!");
 		
-
-		
 		const iteratePaths = (node: GraphNode, weight: number, nodesSeen: Path["nodesSeen"] = []): NestedArray<Path> | Path => {
+			if (node instanceof Recipe && node.progressiveEdges.length > 1) {
+				nodesSeen.push(node.name)
+			}
+
 			if (node.regressiveEdges.length === 1) return iteratePaths(node.regressiveEdges[0].toNode, weight*node.regressiveEdges[0].weight, nodesSeen);
 			else if (node.regressiveEdges.length === 0) return { weight, nodesSeen };
 
