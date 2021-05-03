@@ -27,6 +27,15 @@ const recipieGraph = new RecipeGraph([
 			"fuel": 40
 		}
 	},
+	// {
+	// 	requires: {
+	// 		"heavy oil": 65
+	// 	},
+	// 	produces: {
+	// 		"fuel": 40,
+	// 		"E": 1
+	// 	}
+	// },
 	{
 		requires: {
 			"plastic": 30,
